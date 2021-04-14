@@ -11,17 +11,18 @@
       <table>
         <thead>
           <tr>
+            <th>category</th>
             <th></th>
             <th>title</th>
-            <th>category</th>
             <th>body</th>
             <th>writer</th>
           </tr>
         <tbody>
-          <% @article.each do |article| %>
+          <% @articles.each do |article| %>
           <tr>
+            <th><%= article.category %></th>
             <th><%= article.image %></th>
-            <th><%= article.title %></th>
+            <th><%= link_to article.title, article_path(article) %></th>
             <th><%= article.body %></th>
             <th><h6>writer</h6></th>
           </tr>

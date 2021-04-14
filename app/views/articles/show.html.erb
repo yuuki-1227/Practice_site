@@ -1,2 +1,41 @@
-<h1>Articles#show</h1>
-<p>Find me in app/views/articles/show.html.erb</p>
+<div class = "container" >
+  <div class = "row" >
+    <div class = "col-md-3" style = "background-color: green;">
+      <h1>テスト</h1>
+      <h2></h2>
+
+    </div>
+    <div class = "col-md-8 offset-md-1" style = "background-color: blue;">
+      <h2>記事詳細</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>category</th>
+            <th></th>
+            <th>title</th>
+            <th>body</th>
+            <th>writer</th>
+          </tr>
+        <tbody>
+          <tr>
+            <th><%= @article.category %></th>
+            <th><%= @article.image %></th>
+            <th><%= link_to @article.title, article_path(@article) %></th>
+            <th><%= @article.body %></th>
+            <th><h6>writer</h6></th>
+          </tr>
+        </tbody>
+        </thead>
+      </table>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col-6" style = "background-color: orange;">
+      <h3>テスト</h3>
+    </div>
+    <div class = "col-6" style = "background-color: red;">
+      <h4>テスト</h4>
+    </div>
+  </div>
+</div>
