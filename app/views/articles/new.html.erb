@@ -1,7 +1,14 @@
 <div class = "container">
   <div class = "row">
+
     <div class ="col-md-3"></div>
     <div class ="col-md-8 offset-md-1">
+      <% if @article.errors.any? %>
+        <%= @article.errors.count %>件のエラーが発生しました<br />
+        <% @article.errors.full_messages.each do |message| %>
+        <%= message %>
+        <% end %>
+      <% end %>
       <h1>New Article</h1>
       <%= form_with model:@article, local:true do |f| %>
       <div class = "form">
