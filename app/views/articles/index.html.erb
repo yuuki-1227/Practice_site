@@ -21,7 +21,7 @@
           <% @articles.each do |article| %>
           <tr>
             <th><%= article.category %></th>
-            <th><%= article.image %></th>
+            <th><%= attachment_image_tag article, :image %></th>
             <th><%= link_to article.title, article_path(article) %></th>
             <th><%= article.body %></th>
             <th><h6>writer</h6></th>
