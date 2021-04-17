@@ -32,6 +32,20 @@
         </tbody>
         </thead>
       </table>
+      <div class ="comments">
+        <p>コメント件数:<%= @article.comments.count %></p>
+        <% @article.comments.each do |comment| %>
+          <p></p>
+          <%= comment.user.name %>
+          <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+          <% end %>
+      </div>
+      <div class ="new-comments">
+        <%=form_with(model:[@article, @comment], local:true) do |f| %>
+          <%= f.text_area :comment, row:'5', placeholder:'コメントをここに' %>
+          <%= f.submit '送信する' %>
+        <% end %>
+      </div>
     </div>
   </div>
   <div class = "row">

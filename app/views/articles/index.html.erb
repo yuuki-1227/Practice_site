@@ -25,6 +25,7 @@
             <th><%= link_to article.title, article_path(article) %></th>
             <th><%= article.body %></th>
             <th><%= article.user.name %></th>
+            <th><%= link_to "#{article.comments.count}コメント", article_path(article.id) %></th>
           </tr>
           <% end %>
         </tbody>
