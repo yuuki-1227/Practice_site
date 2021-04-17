@@ -24,7 +24,7 @@
             <th><%= attachment_image_tag article, :image %></th>
             <th><%= link_to article.title, article_path(article) %></th>
             <th><%= article.body %></th>
-            <th><h6>writer</h6></th>
+            <th><%= article.user.name %></th>
           </tr>
           <% end %>
         </tbody>

@@ -23,7 +23,7 @@
             <th><%= attachment_image_tag @article, :image %></th>
             <th><%= link_to @article.title, article_path(@article) %></th>
             <th><%= @article.body %></th>
-            <th><h6>writer</h6></th>
+            <th><%= @article.user.name %></th>
             <% if @article.user == current_user %>
             <th><%= link_to '編集' , edit_article_path(@article) %></th>
             <th><%= link_to '削除' , article_path(@article), method: :delete %></th>
