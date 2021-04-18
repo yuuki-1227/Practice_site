@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
 
   resources :articles do
-    resources :comments, only:[:create, :destroy]
+    resources :comments
   end
 
 end

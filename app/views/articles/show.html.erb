@@ -40,7 +40,7 @@
           <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
           <% if comment.user == current_user %>
           <div class ="comment-delete">
-            <%= link_to "コメント削除", article_path(@article.user), method: :destroy %>
+            <%= link_to "コメント削除", articles_path, method: :destroy %>
           <% end %>
           </div>
           <% end %>
