@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :articles do
     resources :comments
+
+    resource :favorites, only: [:create, :destroy]
   end
 
 end

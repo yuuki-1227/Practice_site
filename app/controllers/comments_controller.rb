@@ -9,8 +9,11 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    Comment.find_by(id: params[:id], article_id: params[:article_id]).destroy
-    redirect_to article_comment_path(@comment)
+    @article = Article.find(params[:id])
+    @comment = @article.comment.find(params[:id])
+    @comment.destroy
+    redirect_to '/articles/#{@article.id}/comments/#{@comment.id}'
+
   end
 end
 
