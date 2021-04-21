@@ -3,6 +3,7 @@
     <div class = "col-md-3" style = "background-color: green;">
       <h1>テスト</h1>
       <h2></h2>
+      <p><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
       <% if @user.id == current_user.id %>
         <p><%= link_to 'プロフィール編集', edit_user_path(@user) %></p>
       <% end %>
@@ -28,8 +29,8 @@
             <th><%= link_to article.title, article_path(article) %></th>
             <th><%= article.body %></th>
             <th><%= article.user.name %></th>
-            <% if article.user == current_user %>
-            <th><%= link_to '編集' , edit_article_path(article) %></th>
+            <% if @user == current_user %>
+            <th><%= link_to '編集' , edit_article_path(@article) %></th>
             <th><%= link_to '削除' , article_path(article), method: :delete %></th>
             <% end %>
             <% end %>
