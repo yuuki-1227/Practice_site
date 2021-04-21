@@ -17,19 +17,19 @@
             <th>body</th>
             <th>writer</th>
           </tr>
-        </thead>
         <tbody>
           <% @articles.each do |article| %>
           <tr>
-            <td><%= article.category %></td>
-            <td><%= attachment_image_tag article, :image %></td>
-            <td><%= link_to article.title, article_path(article) %></td>
-            <td><%= article.body %></td>
-            <td><%= article.user.name %></td>
-            <td><%= link_to "#{article.comments.count}コメント", article_path(article.id) %></td>
+            <th><%= article.category %></th>
+            <th><%= attachment_image_tag article, :image %></th>
+            <th><%= link_to article.title, article_path(article) %></th>
+            <th><%= article.body %></th>
+            <th><%= article.user.name %></th>
+            <th><%= link_to "#{article.comments.count}コメント", article_path(article.id) %></th>
           </tr>
           <% end %>
         </tbody>
+        </thead>
       </table>
     </div>
   </div>

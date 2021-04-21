@@ -1,13 +1,8 @@
 <div class = "container" >
   <div class = "row" >
-    <div class = "col-md-3" style = "background-color: green;">
-      <h1>テスト</h1>
-      <h2></h2>
-
-    </div>
+    <div class = "col-md-3" style = "background-color: green;"><h1>テスト</h1></div>
     <div class = "col-md-8 offset-md-1" style = "background-color: blue;">
       <h2>記事詳細</h2>
-
       <table>
         <thead>
           <tr>
@@ -17,56 +12,55 @@
             <th>body</th>
             <th>writer</th>
           </tr>
+        </thead>
         <tbody>
           <tr>
-            <th><%= @article.category %></th>
-            <th><%= attachment_image_tag @article, :image %></th>
-            <th><%= link_to @article.title, article_path(@article) %></th>
-            <th><%= @article.body %></th>
-            <th><%= @article.user.name %></th>
+            <td><%= @article.category %></td>
+            <td><%= attachment_image_tag @article, :image %></td>
+            <td><%= link_to @article.title, article_path(@article) %></td>
+            <td><%= @article.body %></td>
+            <td><%= @article.user.name %></td>
             <% if @article.user == current_user %>
-            <th><%= link_to '編集' , edit_article_path(@article) %></th>
-            <th><%= link_to '削除' , article_path(@article), method: :delete %></th>
+            <td><%= link_to '編集' , edit_article_path(@article) %></td>
+            <td><%= link_to '削除' , article_path(@article), method: :delete %></td>
             <% end %>
           </tr>
         </tbody>
-        </thead>
       </table>
       <div class ="comments">
         <p>コメント件数:<%= @article.comments.count %></p>
         <% @article.comments.each do |comment| %>
-          <p></p>
           <%= comment.user.name %>
           <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-          <% if comment.user == current_user %>
+
           <div class ="comment-delete">
+            <% if comment.user == current_user %>
             <%= link_to "コメント削除", '/articles', method: :delete %>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="comment-box">
+          <% if @article.favorited_by?(current_user) %>
+            <%= link_to article_favorites_path(@article), method: :delete do %>
+            ❤️ <%= @article.favorites.count %>いいね
+            <% end %>
+          <% else %>
+            <%= link_to article_favorites_path(@article), method: :post do %>
+            ♡<%= @article.favorites.count %>いいね
+            <% end %>
           <% end %>
           </div>
-          <% end %>
-      </div>
-      <div class ="new-comments">
+          <div class ="new-comments">
         <%=form_with(model:[@article, @comment], local:true) do |f| %>
           <%= f.text_area :comment, row:'5', placeholder:'コメントをここに' %>
           <%= f.submit '送信する' %>
         <% end %>
       </div>
-
-      <% if @article.favorited_by?(current_user) %>
-        <p>
-          <%= link_to article_favorites_path(@article), method: :delete do %>
-            ❤️ <%= @article.favorites.count %>いいね
-            <% end %>
-        </p>
-      <% else %>
-        <p>
-          <%= link_to article_favorites_path(@article), method: :post do %>
-            ♡<%= @article.favorites.count %>いいね
-          <% end %>
-        </p>
-      <% end %>
+      </div>
     </div>
   </div>
+</div>
+<div class="container">
   <div class = "row">
     <div class = "col-6" style = "background-color: orange;">
       <h3>テスト</h3>
