@@ -12,31 +12,17 @@
   <header>
     <h1>HOME</h1>
     <% if user_signed_in? %>
-    <%= link_to '新規投稿' , new_article_path %>
-    <%= link_to '記事一覧' , articles_path %>
-    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+    <li><%= link_to '新規投稿' , new_article_path %></li>
+    <li><%= link_to '記事一覧' , articles_path %></li>
+    <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+    <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
     <% else %>
-    <% link_to 'ログイン', new_user_session_path %>
-    <% link_to 'サインアップ', new_user_registration_path %>
+    <li><% link_to 'ログイン', new_user_session_path %></li>
+    <li><% link_to 'サインアップ', new_user_registration_path %></li>
     <% end %>
   </header>
 
   <body>
-    <% if user_signed_in? %>
-    <li>
-      <%= link_to '新規投稿' , new_article_path %>
-    </li>
-    <li>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    </li>
-    <% else %>
-    <li>
-      <%= link_to "新規登録", new_user_registration_path %>
-    </li>
-    <li>
-      <%= link_to "ログイン", new_user_session_path %>
-    </li>
-    <% end %>
     <%= yield %>
   </body>
 

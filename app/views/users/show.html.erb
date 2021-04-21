@@ -1,0 +1,49 @@
+<div class = "container" >
+  <div class = "row" >
+    <div class = "col-md-3" style = "background-color: green;">
+      <h1>テスト</h1>
+      <h2></h2>
+      <% if @user.id == current_user.id %>
+        <p><%= link_to 'プロフィール編集', edit_user_path(@user) %></p>
+      <% end %>
+
+    </div>
+    <div class = "col-md-8 offset-md-1" style = "background-color: blue;">
+      <h2>記事詳細</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>category</th>
+            <th></th>
+            <th>title</th>
+            <th>body</th>
+            <th>writer</th>
+          </tr>
+        <tbody>
+          <tr>
+            <% @article.each do |article| %>
+            <th><%= article.category %></th>
+            <th><%= attachment_image_tag article, :image %></th>
+            <th><%= link_to article.title, article_path(article) %></th>
+            <th><%= article.body %></th>
+            <th><%= article.user.name %></th>
+            <% if article.user == current_user %>
+            <th><%= link_to '編集' , edit_article_path(article) %></th>
+            <th><%= link_to '削除' , article_path(article), method: :delete %></th>
+            <% end %>
+            <% end %>
+          </tr>
+        </tbody>
+        </thead>
+      </table>
+    </div>
+  <div class = "row">
+    <div class = "col-6" style = "background-color: orange;">
+      <h3>テスト</h3>
+    </div>
+    <div class = "col-6" style = "background-color: red;">
+      <h4>テスト</h4>
+    </div>
+  </div>
+</div>
