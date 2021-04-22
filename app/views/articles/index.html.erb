@@ -22,7 +22,7 @@
           <% @articles.each do |article| %>
           <tr>
             <td><%= article.category %></td>
-            <td><%= attachment_image_tag article, :image %></td>
+            <td><%= attachment_image_tag article, :image, :fill, 60, 60 %></td>
             <td><%= link_to article.title, article_path(article) %></td>
             <td><%= article.body %></td>
             <td><%= article.user.name %></td>

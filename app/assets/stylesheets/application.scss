@@ -25,7 +25,25 @@
   margin-top: 10px;
 }
 
+header {
+  display: flex;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+}
+
+li {
+ margin-left: 10px;
+}
+
+
 th {
  margin-left: 20px;
  padding: 10px;
+}
+
+footer h3 {
+ text-align: center;
 }
