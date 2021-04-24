@@ -29,6 +29,7 @@
             <td><%= link_to "#{article.comments.count}コメント", article_path(article.id) %></td>
           </tr>
           <% end %>
+          <%= paginate @articles %>
         </tbody>
       </table>
     </div>
